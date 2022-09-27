@@ -3,8 +3,8 @@ package Apps.Admin;
 import java.util.*;
 
 import Apps.Utilities;
-import Data.Course;
-import Data.Student;
+import DataHolders.Course;
+import DataHolders.Student;
 
 public class AdminApp extends Utilities implements AdminInterface {
     private Scanner m_scanner = new Scanner(System.in);

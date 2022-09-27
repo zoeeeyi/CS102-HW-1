@@ -2,8 +2,8 @@ package Apps.Student;
 
 import java.util.*;
 
-import Data.Course;
-import Data.Student;
+import DataHolders.Course;
+import DataHolders.Student;
 
 interface StudentInterface {
     void ViewAllCourses(List<Course> _courseList);

@@ -1,7 +1,8 @@
 package Apps.Admin;
 
 import java.util.*;
-import Data.*;
+
+import DataHolders.*;
 
 interface AdminInterface {
     void GetInformationOfCourse(Map<String, Course> _courseMap);

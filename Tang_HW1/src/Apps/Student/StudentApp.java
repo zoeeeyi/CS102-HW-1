@@ -2,7 +2,7 @@ package Apps.Student;
 
 import java.util.*;
 import Apps.Utilities;
-import Data.*;
+import DataHolders.*;
 
 public class StudentApp extends Utilities implements StudentInterface{
     private Scanner m_scanner = new Scanner(System.in);
