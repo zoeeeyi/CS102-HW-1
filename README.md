@@ -5,3 +5,4 @@
 # 3. The above data files should load if you clone the repo correctly. In case they don't work, you need to manully change the file path located in the beginning of "CourseRegistrationSystem" class
 # 4. Design documents are in the Docs folder
 # 5. Tang_HW1.zip contains the project, excluding the design documents
+# 6. Thank you very much!
