@@ -436,6 +436,7 @@ public class CourseRegistrationSystem {
                 System.out.println("Not a valid option, try again");
                 continue;
             }
+            System.out.println("Keep in mind! All usernames and passwords in this application are CASE SENSITIVE");
             System.out.println("Please enter your username");
             _userName = m_scanner.nextLine();
             if(!m_studentMap.containsKey(_userName) && !_userName.equalsIgnoreCase("Admin")){
