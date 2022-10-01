@@ -1,9 +1,9 @@
 package DataHolders;
 import java.util.*;;
 
-public class Course {
+public class Course implements java.io.Serializable{
     int maxStudentNum;
-    int currentStudentNum = 0;
+    int currentStudentNum;
     int sectionNum;
 
     String courseUniqueId;
@@ -14,15 +14,35 @@ public class Course {
 
     List<String> studentRegisteredList = new ArrayList<String>();
 
+    //For creating a new course
     public Course(int maxStudentNum, int sectionNum, String courseName, String courseId,
-            String instructor, String location) {
+    String instructor, String location){
         this.maxStudentNum = maxStudentNum;
         this.sectionNum = sectionNum;
         this.courseName = courseName;
         this.courseId = courseId;
         this.instructor = instructor;
         this.location = location;
+        this.currentStudentNum = 0;
         this.courseUniqueId = this.courseId + Integer.toString(this.sectionNum);
+    }
+
+    //For reading data from original csv file
+    public Course(int maxStudentNum, int sectionNum, String courseName, String courseId,
+            String instructor, String location, List<String> _studentRegList) {
+        this.maxStudentNum = maxStudentNum;
+        this.sectionNum = sectionNum;
+        this.courseName = courseName;
+        this.courseId = courseId;
+        this.instructor = instructor;
+        this.location = location;
+        this.studentRegisteredList = _studentRegList;
+        this.currentStudentNum = (studentRegisteredList != null) ? studentRegisteredList.size() : 0;
+        this.courseUniqueId = this.courseId + Integer.toString(this.sectionNum);
+    }
+
+    public void UpdateCurrentStudentNum(){
+        currentStudentNum = studentRegisteredList.size();
     }
 
     //Getters and Setters

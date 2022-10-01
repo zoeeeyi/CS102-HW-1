@@ -1,5 +1,5 @@
 package DataHolders;
-public class UserParent {
+public class UserParent  implements java.io.Serializable{
     String userName;
     String password;
     String firstName;
@@ -7,7 +7,7 @@ public class UserParent {
     String identity;
 
     public UserParent(){
-        //Constructor
+        this.identity = "Admin";
     }
 
     public UserParent(String userName, String password, String firstName, String lastName, String identity) {
