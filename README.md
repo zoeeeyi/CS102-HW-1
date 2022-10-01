@@ -1,1 +1,2 @@
-# CS102-HW1
+# CS102 Data Structure
+# NYU Fall 2022
