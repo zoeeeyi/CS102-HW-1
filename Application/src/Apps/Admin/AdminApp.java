@@ -426,7 +426,7 @@ public class AdminApp extends Utilities implements AdminInterface {
             System.out.println("Please create a password for this student");
             _password = m_scanner.nextLine();
 
-            Student _newStudent = new Student(_studentUsername, _fName, _lName, _password, "Student");
+            Student _newStudent = new Student(_studentUsername, _password, _fName, _lName, "Student");
             _studentList.add(_newStudent);
             System.out.println("Student created!");
             return true;
@@ -434,6 +434,14 @@ public class AdminApp extends Utilities implements AdminInterface {
             System.out.println("Wrong input type!");
             m_scanner.nextLine();
             return false;
+        }
+    }
+
+    @Override
+    public void DisplayAllStudents(List<Student> _studentList){
+        System.out.println("Student List: ");
+        for (Student _s : _studentList){
+            System.out.println("Username: " + _s.getUserName() + ", Name: " + _s.getFirstName() + " " + _s.getLastName());
         }
     }
 

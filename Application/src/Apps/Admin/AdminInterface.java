@@ -11,6 +11,7 @@ interface AdminInterface {
     void CheckStudentRegisteredCourse(Map<String, Student> _studentMap, Map<String, Course> _courseMap);
     void SortCoursesByStudentNum(List<Course> _courseList);
     void GetInformationOfCourse(Map<String, Course> _courseMap, Map<String, Student> _studentMap);
+    void DisplayAllStudents(List<Student> _studentList);
     boolean CreateCourse(Map<String, Course> _courseMap, List<Course> _courseList);
     boolean DeleteCourse(Map<String, Course> _courseMap, List<Course> _courseList, List<Student> _studentList);
     boolean EditCourse(Map<String, Course> _courseMap, List<Course> _courseList, List<Student> _studentList, Map<String, Student> _studentMap);

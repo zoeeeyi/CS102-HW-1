@@ -15,6 +15,10 @@ public class Student extends UserParent{
         return registeredCourseList;
     }
 
+    public void resetRegisteredCourseList(){
+        this.registeredCourseList = new ArrayList<>();
+    }
+
     public void setRegisteredCourseList(List<String> registeredCourseList) {
         this.registeredCourseList = registeredCourseList;
     }

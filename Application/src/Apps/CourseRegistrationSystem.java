@@ -16,6 +16,10 @@ import java.io.ObjectOutputStream;
 import DataHolders.*;
 
 public class CourseRegistrationSystem {
+    private static String m_courseSerFilePath = "Data/CourseList.ser";
+    private static String m_studentSerFilePath = "Data/StudentList.ser";
+    private static String m_fullCourseExportPath = "Data/Full Courses.txt";
+    private static String m_courseCSVFilePath = "Data/MyUniversityCoursesFile.csv";
     private static Scanner m_scanner = new Scanner(System.in);
     private static List<Student> m_studentList = new ArrayList<>();
     private static List<Course> m_courseList = new ArrayList<>();
@@ -113,10 +117,11 @@ public class CourseRegistrationSystem {
                             System.out.println("4. View all registered student of a course");
                             System.out.println("5. View the list of courses that a given student is being registered on");
                             System.out.println("6. Sort courses based on current number of students");
-                            System.out.println("7. Exit");
+                            System.out.println("7. View student list");
+                            System.out.println("8. Exit");
                             _userOption = m_scanner.nextInt();
                             m_scanner.nextLine();
-                            if (_userOption == 7){
+                            if (_userOption == 8){
                                 break;
                             }
                             switch(_userOption){
@@ -145,6 +150,10 @@ public class CourseRegistrationSystem {
     
                                 case 6:
                                     m_adminApp.SortCoursesByStudentNum(m_courseList);
+                                    break;
+
+                                case 7:
+                                    m_adminApp.DisplayAllStudents(m_studentList);
                                     break;
     
                                 default:
@@ -233,9 +242,10 @@ public class CourseRegistrationSystem {
     @SuppressWarnings("unchecked")
     static boolean Deserialize(){
         boolean _success = true;
+        boolean _noCourseSer = true;
 		try{
             //Read course file
-            FileInputStream fis = new FileInputStream("Data/CourseList.ser");
+            FileInputStream fis = new FileInputStream(m_courseSerFilePath);
             ObjectInputStream ois = new ObjectInputStream(fis);
             m_courseList = (List<Course>) ois.readObject();
             for (int i = 0; i<m_courseList.size(); i++){
@@ -244,6 +254,7 @@ public class CourseRegistrationSystem {
             ois.close();
             fis.close();
             System.out.println("Previous save successfully loaded!");
+            _noCourseSer = false;
         } catch(IOException ioe) {
             System.out.println("No course list file found, reading from CSV");
             _success = readCSV();
@@ -254,12 +265,24 @@ public class CourseRegistrationSystem {
 
         try{
             //Read student file
-            FileInputStream fis = new FileInputStream("Data/StudentList.ser");
+            FileInputStream fis = new FileInputStream(m_studentSerFilePath);
             ObjectInputStream ois = new ObjectInputStream(fis);
             m_studentList = (List<Student>) ois.readObject();
+            if (_noCourseSer){
+                System.out.println("No previous saved course list found. The course file has been reset, this will clear every student's registered course list");
+                for (Student _s: m_studentList){
+                    _s.resetRegisteredCourseList();
+                }
+            }
             ois.close();
             fis.close();
         } catch (FileNotFoundException e){
+            if (!_noCourseSer){
+                for (Course _c : m_courseList){
+                    _c.getStudentRegisteredList().clear();
+                    _c.UpdateCurrentStudentNum();
+                }
+            }
             System.out.println("No student list file found, we will create a new one when you close the app.");
         } catch(IOException ioe) {
             System.out.println(ioe);
@@ -273,7 +296,7 @@ public class CourseRegistrationSystem {
 
     static boolean Serialize(List<Course> _courseList, List<Student> _studentList){
         boolean _successPart1 = false;
-        String _fileName = "Data/CourseList.ser";
+        String _fileName = m_courseSerFilePath;
         while(true){
             try {
                 //FileOutput Stream writes data to a file
@@ -304,7 +327,7 @@ public class CourseRegistrationSystem {
         }
 
         boolean _successPart2 = false;
-        _fileName = "Data/StudentList.ser";
+        _fileName = m_studentSerFilePath;
         while (true){
             try {
                 //FileOutput Stream writes data to a file
@@ -340,7 +363,7 @@ public class CourseRegistrationSystem {
     static boolean readCSV()
     {
         boolean _success = false;
-        String _filepath = "Data/MyUniversityCoursesFile.csv";
+        String _filepath = m_courseCSVFilePath;
         /*try{
             System.out.println("Please enter the path for course list csv");
             _filepath =  m_scanner.nextLine();
@@ -391,7 +414,7 @@ public class CourseRegistrationSystem {
     }
 
     private static void ExportFullCourses(ArrayList<String> _fullCourseList){
-        String _fileName = "Data/Full Courses.txt";
+        String _fileName = m_fullCourseExportPath;
 
         while(true){
             try{
