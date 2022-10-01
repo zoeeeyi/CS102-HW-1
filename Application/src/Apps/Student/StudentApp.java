@@ -23,8 +23,8 @@ public class StudentApp extends Utilities implements StudentInterface{
         for (Course _course : _courseList){
             if (_course.getCurrentStudentNum() < _course.getMaxStudentNum()){
                 System.out.print(_course.getCourseId() + ", ");
-                System.out.print("Max number of students: " + _course.getMaxStudentNum() + ", ");
-                System.out.print("Current No of students: " + _course.getCurrentStudentNum() + ", ");
+                System.out.print("Max Students No: " + _course.getMaxStudentNum() + ", ");
+                System.out.print("Current Students No: " + _course.getCurrentStudentNum() + ", ");
                 int _remainingSpot = _course.getMaxStudentNum() - _course.getCurrentStudentNum();
                 System.out.print("Remaining spots: " + _remainingSpot + ", ");
                 System.out.println(_course.getCourseName());
@@ -88,7 +88,8 @@ public class StudentApp extends Utilities implements StudentInterface{
                 //Check if the student is in any other section
                 for (String _studentCourseId : _student.getRegisteredCourseList()){
                     if (_courseMap.get(_studentCourseId).getCourseId().equals(_course.getCourseId())){
-                        System.out.println("You have already registered to another section of the class");
+                        System.out.println("You have already registered to one of the SECTIONs of the class, you may only take 1 section per semester");
+                        System.out.println("Withdraw from that section if you want to switch sections!");
                         return false;
                     }
                 }
@@ -107,6 +108,7 @@ public class StudentApp extends Utilities implements StudentInterface{
             }
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return false;
         }
 
@@ -139,6 +141,7 @@ public class StudentApp extends Utilities implements StudentInterface{
             }
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return false;
         }
     }

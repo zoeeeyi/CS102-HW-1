@@ -77,6 +77,7 @@ public class AdminApp extends Utilities implements AdminInterface {
             
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
         }
     }
 
@@ -101,6 +102,7 @@ public class AdminApp extends Utilities implements AdminInterface {
             }
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
         }
     }
 
@@ -165,6 +167,7 @@ public class AdminApp extends Utilities implements AdminInterface {
             return true;
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return false;
         }
     }
@@ -198,6 +201,7 @@ public class AdminApp extends Utilities implements AdminInterface {
             }
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return false;
         }
     }
@@ -314,6 +318,7 @@ public class AdminApp extends Utilities implements AdminInterface {
             }
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return false;
         }
     }
@@ -367,6 +372,7 @@ public class AdminApp extends Utilities implements AdminInterface {
     
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return null;
         }
     }
@@ -395,6 +401,7 @@ public class AdminApp extends Utilities implements AdminInterface {
             }
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
         }
         
         
@@ -425,6 +432,7 @@ public class AdminApp extends Utilities implements AdminInterface {
             return true;
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return false;
         }
     }
@@ -468,6 +476,7 @@ public class AdminApp extends Utilities implements AdminInterface {
 
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return null;
         }
     }
@@ -507,6 +516,7 @@ public class AdminApp extends Utilities implements AdminInterface {
 
         } catch (InputMismatchException e){
             System.out.println("Wrong input type!");
+            m_scanner.nextLine();
             return null;
         }
     }

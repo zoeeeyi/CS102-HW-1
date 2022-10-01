@@ -209,6 +209,8 @@ public class CourseRegistrationSystem {
     
                 }
             } catch (InputMismatchException e){
+                System.out.println("Wrong input type! Try again!");
+                m_scanner.nextLine();
                 continue;
             }
 
